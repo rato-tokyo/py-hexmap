@@ -1,18 +1,18 @@
-def generateAllTowns():
+def generate_all_towns():
     """
     Provides a list of all possible town names.
 
     Reason for keeping this function:
     This function is critical for ensuring deterministic map generation.
-    The map generation algorithm, specifically in `HexMap.generateTowns` and
-    `HexMap.shuffle`, uses a seeded random number generator (`rand`) to select
+    The map generation algorithm, specifically in `HexMap.generate_towns` and
+    `HexMap.shuffle`, uses a seeded random number generator (`_rand`) to select
 
     and place towns. Although the town names themselves do not appear in the
     final output matrix, the process of generating towns, which depends on the
     *number* of towns available in this list and subsequent shuffling, consumes
     random numbers from the seeded generator.
 
-    If this function or the calls to `generateTowns` were removed, the sequence
+    If this function or the calls to `generate_towns` were removed, the sequence
     of random numbers would change. This would alter every subsequent "random"
     decision, such as land/water placement, leading to a completely different
     map layout and causing the tests, which expect a specific output for a given

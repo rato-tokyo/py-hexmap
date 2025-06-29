@@ -4,14 +4,16 @@ def field_to_estate(field):
     This is the final step in translating the generated map data into the
     simple matrix format required by the tests and for output.
     """
-    if(str(field.Type)=="water"):
+    if(str(field.type)=="water"):
         return "water"
-    elif(field.Capital != -1):
-        return "capital"
-    elif(field.Estate  =="" ):
+    elif(field.capital != -1):
+        return field.town_name
+    elif(field.estate  =="" ):
         return "land"
+    elif(field.estate == "town"):
+        return field.town_name
     else:
-        return field.Estate
+        return field.estate
 
 def fields_to_matrix(fields):
     """

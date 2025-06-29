@@ -1,15 +1,12 @@
-
 import unittest
 import json
 import sys
 import os
 
-# Add the parent directory to the Python path to import main
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add the src directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# A list of sample map IDs used for testing purposes.
-# This ensures that the map generation logic is tested against a variety of seeds.
-map_sample_list=[0,10,1000,123456,9999,99999,999999]
+from py_hexmap import create_map_matrix, map_sample_list
 
 class TestMain(unittest.TestCase):
     def test_map_generation(self):
@@ -27,4 +24,11 @@ class TestMain(unittest.TestCase):
                 self.assertEqual(generated_matrix, expected_matrix)
 
 if __name__ == '__main__':
+    # Regenerate test data
+    for map_id in map_sample_list:
+        file_path = os.path.join(os.path.dirname(__file__), f"{map_id}.json")
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(create_map_matrix(map_id), f, indent=4)
+
+    # Run tests
     unittest.main()
