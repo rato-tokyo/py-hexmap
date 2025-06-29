@@ -6,7 +6,7 @@ from .utils import fields_to_matrix_representation
 # This list is primarily for internal testing and not part of the public API.
 map_sample_list=[0,10,1000,123456,9999,99999,999999]
 
-def generate_map_data(map_id: int, x_max: int = 20, y_max: int = 11) -> list[list[str]]:
+def generate_map_data(map_id: int, x_max, y_max) -> list[list[str]]:
     """
     Generates map data as a 2D list (matrix) of strings for a given seed and dimensions.
 
