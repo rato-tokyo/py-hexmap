@@ -10,13 +10,18 @@ class HexMap:
     the necessary methods to build the map from scratch. It must be kept
     as it is the core of the project.
     """
-    def __init__(self, map_number):
+    def __init__(self, map_number: int, x_max: int, y_max: int):
         """
-        Initializes the HexMap with a specific seed (map_number).
+        Initializes the HexMap with a specific seed (map_number) and dimensions.
         This setup is crucial for generating a deterministic, reproducible map.
+
+        Args:
+            map_number (int): The seed for the random number generator.
+            x_max (int): The maximum X-coordinate for the map (width).
+            y_max (int): The maximum Y-coordinate for the map (height).
         """
         self.random_seed = map_number
-        self.board = Board()
+        self.board = Board(x_max, y_max)
         self.board.map_number = map_number
         self.board.town_names = generate_all_towns()
         self.pathfinder = Pathfinder()

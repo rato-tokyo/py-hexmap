@@ -23,11 +23,17 @@ class Board:
     land groups, and towns. It is essential as it acts as the central container
     for all map-related data during generation.
     """
-    def __init__(self):
-        """Initializes the board with default dimensions and empty data structures."""
+    def __init__(self, x_max: int, y_max: int):
+        """
+        Initializes the board with specified dimensions and empty data structures.
+
+        Args:
+            x_max (int): The maximum X-coordinate for the map (width).
+            y_max (int): The maximum Y-coordinate for the map (height).
+        """
         self.map_number = 0
-        self.x_max = 20
-        self.y_max = 11
+        self.x_max = x_max
+        self.y_max = y_max
         self.hex_width = 50
         self.hex_height = 40
         self.fields = {}
