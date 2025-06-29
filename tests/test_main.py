@@ -7,7 +7,9 @@ import os
 # Add the parent directory to the Python path to import main
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import create_map_matrix, map_sample_list
+# A list of sample map IDs used for testing purposes.
+# This ensures that the map generation logic is tested against a variety of seeds.
+map_sample_list=[0,10,1000,123456,9999,99999,999999]
 
 class TestMain(unittest.TestCase):
     def test_map_generation(self):
